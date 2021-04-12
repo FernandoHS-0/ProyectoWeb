@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('alumno', [homeAlumnoController::class, 'index']);
+Route::get('alumno', [homeAlumnoController::class, 'index']) -> name('inicioAlumno');
+Route::get('alumno/cursadas', [homeAlumnoController::class, 'cursadas']) -> name('matCurs');
+Route::get('alumno/mapaAlumno', [homeAlumnoController::class, 'mapaAlumno']) -> name('mapaAl');

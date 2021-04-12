@@ -34,16 +34,16 @@
 </head>
 <body>
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">Cursadas</a></li>
+        <li><a href="{{route('matCurs')}}">Cursadas</a></li>
         <li><a href="#!">En curso</a></li>
         <li><a href="#!">Proyección</a></li>
     </ul>
     <nav>
         <div class="nav-wrapper" id="buap1">
-          <a href="#" class="brand-logo" id="logo">BUAP</a>
+          <a href="{{route('inicioAlumno')}}" class="brand-logo" id="logo">BUAP</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Perfil</a></li>
-            <li><a href="badges.html">Mapa</a></li>
+            <li><a href="#">Perfil</a></li>
+            <li><a href="{{route('mapaAl')}}">Mapa</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Materias<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
         </div>

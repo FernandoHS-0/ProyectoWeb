@@ -10,4 +10,14 @@ class homeAlumnoController extends Controller
     {
         return view('homeAlumno');
     }
+
+    public function cursadas()
+    {
+        return view('materiasCursadas');
+    }
+
+    public function mapaAlumno()
+    {
+        return view('mapaAlumno');
+    }
 }
