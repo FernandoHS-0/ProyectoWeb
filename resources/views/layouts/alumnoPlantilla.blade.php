@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
+    <link rel="icon" href="{!! asset('escudoBuap.ico') !!}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
@@ -29,6 +30,14 @@
         #nav-mobile{
             margin-right: 10%;
         }
+        .centrar{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        #dropdown1 li a{
+          color: rgb(0, 59, 92);
+        }
     </style>
 
 </head>
@@ -42,7 +51,7 @@
         <div class="nav-wrapper" id="buap1">
           <a href="{{route('inicioAlumno')}}" class="brand-logo" id="logo">BUAP</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Perfil</a></li>
+            <li><a href="{{route('inicioAlumno')}}">Perfil</a></li>
             <li><a href="{{route('mapaAl')}}">Mapa</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Materias<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
