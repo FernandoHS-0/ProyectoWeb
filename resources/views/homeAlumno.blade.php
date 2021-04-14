@@ -18,15 +18,21 @@
         #titPerf{
             margin-left: 5%;
         }
+        #infoAl{
+            padding-top: 6%;
+        }
     </style>
     <h3 id="titPerf">Perfil</h3>
-    <div id="bloque1" class="z-depth-3 hoverable">
+    <div id="bloque1" class="z-depth-3">
         <div class="row">
-            <div class="col s9">
-                <h4 class="center-align white-text">Hola, Hernández Sánchez Luis Fernando</h4>
-                <h4 class="center-align white-text">201842437</h4>
-                <h4 class="center-align white-text">Ingeniería en tecnologías de la información</h4>
-                <h4 class="center-align white-text">Tu promedio: 8.62</h4>
+            <div class="col s9" id="infoAl">
+                @foreach ($alumno as $datos)
+                    <h5 class="center-align white-text condensed light">Hola, {{$datos->Nombre}} {{$datos->ApellidoPaterno}} {{$datos->ApellidoMaterno}}</h5>
+                    <br><h5 class="center-align white-text thin">{{$datos->Matricula}}</h5>
+                    <br><h5 class="center-align white-text condensed light">Ingeniería en tecnologías de la información (Ciudad Universitaria)</h5>
+                    <br><h5 class="center-align white-text condensed light">Tu promedio</h5>
+                    <h3 class="center-align white-text thin">8.64</h3>
+                @endforeach
             </div>
             <div class="col s3">
                 <img class="responsive-img" src="{{asset('storage/images/logoPartidoBlanco.png')}}" id="logoUsr">

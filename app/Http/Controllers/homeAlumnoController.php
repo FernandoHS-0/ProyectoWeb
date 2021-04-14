@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Alumno;
+use App\Models\ControlMateria;
 
 class homeAlumnoController extends Controller
 {
     public function index()
     {
-        return view('homeAlumno');
+        $alumno = Alumno::where('idAlumno', 203)->get();
+        return view('homeAlumno', compact('alumno'));
     }
 
     public function cursadas()
     {
-        return view('materiasCursadas');
+        $materias = ControlMateria::join('materias', 'control_materias.idmaterias', '=', 'materias.idmaterias')
+                                    ->select('materias.Nombre', 'materias.Nivel', 'materias.Area', 'materias.Creditos')
+                                    ->where('idAlumno', 203)->where('estado', 'Finalizado')->get();
+        return view('materiasCursadas', compact('materias'));
     }
 
     public function mapaAlumno()
