@@ -26,4 +26,14 @@ class homeAlumnoController extends Controller
     {
         return view('mapaAlumno');
     }
+
+    public function enCurso()
+    {
+        return view('enCurso');
+    }
+
+    public function proyeccion()
+    {
+        return view('proyeccion');
+    }
 }

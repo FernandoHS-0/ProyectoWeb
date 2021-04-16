@@ -24,7 +24,6 @@
                 <td>{{$item->Area}}</td>
                 <td>{{$item->Creditos}}</td>
             </tr>
-            
             @endforeach
         </tbody>
     </table>
