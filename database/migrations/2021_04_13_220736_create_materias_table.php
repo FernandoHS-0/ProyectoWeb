@@ -14,7 +14,7 @@ class CreateMateriasTable extends Migration
     public function up()
     {
         Schema::create('materias', function (Blueprint $table) {
-            $table->string('idmaterias')->unique()->primary();
+            $table->string('idmaterias')->primary();
             $table->string('nombre');
             $table->integer('periodo');
             $table->string('nivel');
