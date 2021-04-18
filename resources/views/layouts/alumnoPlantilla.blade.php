@@ -15,6 +15,7 @@
     <script>
         $(document).ready(function(){
             $('.dropdown-button').dropdown();
+            $('.modal-trigger').leanModal();
         });
     </script>
     
@@ -45,7 +46,7 @@
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="{{route('matCurs')}}">Cursadas</a></li>
         <li><a href="#!">En curso</a></li>
-        <li><a href="#!">Proyección</a></li>
+        <li><a href="{{route('proyAl')}}">Proyección</a></li>
     </ul>
     <nav>
         <div class="nav-wrapper" id="buap1">
