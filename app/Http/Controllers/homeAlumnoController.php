@@ -29,7 +29,10 @@ class homeAlumnoController extends Controller
 
     public function enCurso()
     {
-        return view('enCurso');
+        $materias1 = ControlMateria::join('materias', 'control_materias.idmaterias', '=', 'materias.idmaterias')
+                                      ->select('materias.Nombre', 'materias.Nivel', 'materias.Area', 'materias.Creditos')
+                                      ->where('idAlumno', 203)->where('estado', 'En curso')->get();
+        return view('enCurso', compact('materias1'));
     }
 
     public function proyeccion()

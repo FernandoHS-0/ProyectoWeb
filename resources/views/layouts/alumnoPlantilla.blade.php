@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
-    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>  
-    
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
     <script>
         $(document).ready(function(){
             $('.dropdown-button').dropdown();
         });
     </script>
-    
+
     <title>@yield('titulo')</title>
-    
+
     <style>
         #buap1{
             background-color: rgb(0, 59, 92);
@@ -44,7 +44,7 @@
 <body>
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="{{route('matCurs')}}">Cursadas</a></li>
-        <li><a href="#!">En curso</a></li>
+        <li><a href=""{{route('enCurso')}}"">En curso</a></li>
         <li><a href="#!">Proyección</a></li>
     </ul>
     <nav>
