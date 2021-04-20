@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
-    <link rel="icon" href="{!! asset('escudoBuap.ico') !!}">
+    <link rel="icon" href="{{asset('storage\images\buapBlanco.ico')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
@@ -45,7 +45,7 @@
 <body>
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="{{route('matCurs')}}">Cursadas</a></li>
-        <li><a href="#!">En curso</a></li>
+        <li><a href="{{route('enCurso')}}">En curso</a></li>
         <li><a href="{{route('proyAl')}}">Proyección</a></li>
     </ul>
     <nav>

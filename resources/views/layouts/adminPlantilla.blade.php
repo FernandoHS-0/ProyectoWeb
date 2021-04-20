@@ -24,6 +24,14 @@
         #buap1{
             background-color: rgb(0, 59, 92);
         }
+        #footer1{
+          background-color: rgb(0, 59, 92);
+          position: absolute;
+          clear: round($number: 0);
+          left:0px;
+          bottom:0px;
+          width:100%;
+        }
         #logo{
             margin-left: 10%;
         }
@@ -43,7 +51,7 @@
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper" id="buap1">
+        <div class="nav-wrapper" id="footer1">
           <a href="{{route('inicioAdmin')}}" class="brand-logo" id="logo">BUAP</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="{{route('inicioAdmin')}}">Perfil</a></li>
