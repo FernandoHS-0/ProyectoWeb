@@ -22,7 +22,7 @@ Route::get('alumno', [homeAlumnoController::class, 'index']) -> name('inicioAlum
 Route::get('alumno/cursadas', [homeAlumnoController::class, 'cursadas']) -> name('matCurs');
 Route::get('alumno/mapaAlumno', [homeAlumnoController::class, 'mapaAlumno']) -> name('mapaAl');
 Route::get('alumno/enCurso', [homeAlumnoController::class, 'enCurso']) -> name('enCurso');
-Route::get('alumno/proyeccion', [homeAlumnoController::class, 'proyeccion']) -> name('mapaAl');
+Route::get('alumno/proyeccion', [homeAlumnoController::class, 'proyeccion']) -> name('proyAl');
 
 
 Route::get('administrador', [AdministradorController::class, 'inicioAdmin']) -> name('inicioAdmin');
