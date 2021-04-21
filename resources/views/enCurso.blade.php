@@ -5,6 +5,14 @@
     #titPag{
         margin-left: 5%;
     }
+    #footer1{
+          background-color: rgb(0, 59, 92);
+          position: absolute;
+          clear: round($number: 0);
+          left:0px;
+          bottom:0px;
+          width:100%;
+    }
 </style>
 <h3 id="titPag">Materias en curso</h3>
 <table class="highlight centered responsive-table">

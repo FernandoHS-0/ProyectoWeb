@@ -23,7 +23,10 @@
     
     <style>
         #buap1{
-            background-color: rgb(0, 59, 92);
+          background-color: rgb(0, 59, 92);
+        }
+        #footer1{
+          background-color: rgb(0, 59, 92);
         }
         #logo{
             margin-left: 10%;
@@ -61,7 +64,7 @@
 
       @yield('cuerpo')
 
-      <footer class="page-footer" id="buap1">
+      <footer class="page-footer" id="footer1">
         <div class="container">
           <div class="row">
             <div class="col l6 s12">

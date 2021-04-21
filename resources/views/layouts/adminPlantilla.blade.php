@@ -8,6 +8,7 @@
     <link rel="icon" href="{!! asset('escudoBuap.ico') !!}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="{{asset('storage\images\buapBlanco.ico')}}">
     <!-- Compiled and minified JavaScript -->
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>  
@@ -51,7 +52,7 @@
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper" id="footer1">
+        <div class="nav-wrapper" id="buap1">
           <a href="{{route('inicioAdmin')}}" class="brand-logo" id="logo">BUAP</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="{{route('inicioAdmin')}}">Perfil</a></li>
@@ -63,7 +64,7 @@
 
       @yield('cuerpo')
 
-      <footer class="page-footer" id="buap1">
+      <footer class="page-footer" id="footer1">
         <div class="container">
           <div class="row">
             <div class="col l6 s12">
