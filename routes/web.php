@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeAlumnoController;
 use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\UserAuth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +15,25 @@ use App\Http\Controllers\AdministradorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', function () {
+
+    if(session()->has('matricula')){
+        if(strlen(session('matricula')) == 9){
+            return redirect('alumno');
+        }elseif (strlen(session('matricula')) == 4) {
+            return redirect('administrador');
+        }
+    }
+    return view('/login');
+});
+
+Route::view('login', 'login');
+
+Route::get('/logOut', function () {
+    if(session()->has('matricula')){
+        session()->pull('matricula');
+    }
+    return redirect('/login');
 });
 
 Route::get('alumno', [homeAlumnoController::class, 'index']) -> name('inicioAlumno');
@@ -29,5 +47,7 @@ Route::get('administrador', [AdministradorController::class, 'inicioAdmin']) -> 
 Route::get('administrador/datos_alumno', [AdministradorController::class, 'datosAlumno']) -> name('datosAl');
 
 Route::post('/verInfo', [AdministradorController::class, 'obtenerDatos']) -> name('obt');
+
+Route::post('user', [UserAuth::class,'userLogin']);
 
 

@@ -37,6 +37,9 @@
             <div class="col s3">
                 <img class="responsive-img" src="{{asset('storage/images/logoPartidoBlanco.png')}}" id="logoUsr">
             </div>
+            <div class="col s12">
+                <a class="waves-effect waves-light btn" href="http://localhost/codigos/Proyecto/blog/public/logOut">Cerrar sesión</a>
+            </div>
         </div>
     </div>
 @endsection
