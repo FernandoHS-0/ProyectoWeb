@@ -17,7 +17,12 @@ class UserAuth extends Controller
             foreach ($alumno as $datAl){
                 if($datAl->Matricula == $req->input('matricula') && $datAl->Contrasena == $req->input('contrasena')){
                     $req->session()->put('matricula', $sesion['matricula']);
-                    return redirect('alumno');
+                    if($datAl->Matricula == $datAl->Contrasena){
+                        return redirect('cambio_contrasena');
+                    }else{
+                        return redirect('alumno');
+                    }
+                    
                 }
             }
         }elseif (strlen($req->input('matricula')) == 4) {
@@ -30,5 +35,11 @@ class UserAuth extends Controller
             }
         }
 
+    }
+
+    public function cambioContra(Request $nReq){
+        if(Alumno::where('Matricula', session('matricula'))->update(['Contrasena' => $nReq->input('confPass')])){
+            return redirect('alumno');
+        }
     }
 }

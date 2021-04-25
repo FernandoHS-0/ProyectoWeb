@@ -23,11 +23,14 @@ Route::get('/login', function () {
         }elseif (strlen(session('matricula')) == 4) {
             return redirect('administrador');
         }
+    }else{
+        return view('/login');
     }
-    return view('/login');
+    
 });
 
 Route::view('login', 'login');
+Route::view('cambio_contrasena', 'chgPsswd');
 
 Route::get('/logOut', function () {
     if(session()->has('matricula')){
@@ -50,4 +53,5 @@ Route::post('/verInfo', [AdministradorController::class, 'obtenerDatos']) -> nam
 
 Route::post('user', [UserAuth::class,'userLogin']);
 
+Route::post('cambio', [UserAuth::class, 'cambioContra']);
 
