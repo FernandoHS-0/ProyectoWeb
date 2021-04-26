@@ -27,11 +27,6 @@
         }
         #footer1{
           background-color: rgb(0, 59, 92);
-          position: absolute;
-          clear: round($number: 0);
-          left:0px;
-          bottom:0px;
-          width:100%;
         }
         #logo{
             margin-left: 10%;
@@ -57,7 +52,7 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="{{route('inicioAdmin')}}">Perfil</a></li>
             <li><a href="{{route('datosAl')}}">Buscar alumno</a></li>
-            <li><a href="#"">Proyecciones</a></li>
+            <li><a href="{{route('proyec')}}">Proyecciones</a></li>
           </ul>
         </div>
       </nav>
