@@ -21,6 +21,10 @@
         #infoAl{
             padding-top: 6%;
         }
+        #btnLo{
+            margin-left: 32%;
+            background-color: rgb(0, 181, 226);
+        }
     </style>
     <h3 id="titPerf">Perfil</h3>
     <div id="bloque1" class="z-depth-3">
@@ -38,7 +42,7 @@
                 <img class="responsive-img" src="{{asset('storage/images/logoPartidoBlanco.png')}}" id="logoUsr">
             </div>
             <div class="col s12">
-                <a class="waves-effect waves-light btn" href="http://localhost/codigos/Proyecto/blog/public/logOut">Cerrar sesión</a>
+                <a class="waves-effect waves-light btn" href="http://localhost/codigos/Proyecto/blog/public/logOut" id="btnLo">Cerrar sesión</a>
             </div>
         </div>
     </div>

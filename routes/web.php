@@ -15,6 +15,10 @@ use App\Http\Controllers\UserAuth;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::get('/login', function () {
 
     if(session()->has('matricula')){
