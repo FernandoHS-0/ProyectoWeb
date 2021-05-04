@@ -9,7 +9,7 @@
         margin-right: auto;
         margin-left: auto;
         padding-top: 20px;
-        padding-bottom: 20px; 
+        padding-bottom: 20px;
     }
     #datosAlumno{
         overflow-y:scroll;
@@ -50,7 +50,6 @@
         display: none;
     }
 </style>
-
 
 <div id="bloque1" class="z-depth-3">
     <div class="row">
@@ -115,9 +114,5 @@
         });
     });
 </script>
-
-
-
-
 @endsection
     

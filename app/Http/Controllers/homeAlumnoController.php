@@ -80,8 +80,8 @@ class homeAlumnoController extends Controller
         }
         $fCol->toJson();
         $jReq = json_decode($fCol);
-//$fCol->push(PreRequisitos::select('idmaterias', 'preRequisito')->where('idmaterias', $sigMat->idmaterias)->get());
-//array_push($preReq, PreRequisitos::select('idmaterias', 'preRequisito')->where('idmaterias', $sigMat->idmaterias)->get());
+        //$fCol->push(PreRequisitos::select('idmaterias', 'preRequisito')->where('idmaterias', $sigMat->idmaterias)->get());
+        //array_push($preReq, PreRequisitos::select('idmaterias', 'preRequisito')->where('idmaterias', $sigMat->idmaterias)->get());
         $listM = [];
         foreach ($jReq as $key => $element){
             foreach($element as $campo){

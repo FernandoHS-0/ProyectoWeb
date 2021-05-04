@@ -52,8 +52,11 @@ Route::get('alumno/proyeccion', [homeAlumnoController::class, 'proyeccion']) -> 
 
 Route::get('administrador', [AdministradorController::class, 'inicioAdmin']) -> name('inicioAdmin');
 Route::get('administrador/datos_alumno', [AdministradorController::class, 'datosAlumno']) -> name('datosAl');
+Route::get('administrador/proyecciones', [AdministradorController::class, 'verProyecciones']) -> name('proyec');
+
 
 Route::post('/verInfo', [AdministradorController::class, 'obtenerDatos']) -> name('obt');
+Route::post('/verProyeccion', [AdministradorController::class, 'obtenerDatosProyecion']) -> name('obtP');
 
 Route::post('user', [UserAuth::class,'userLogin']);
 
