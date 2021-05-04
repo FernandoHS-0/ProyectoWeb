@@ -12,17 +12,28 @@ use App\Models\PreRequisitos;
 
 class homeAlumnoController extends Controller
 {
+    function getId(){
+        $sesAl = Alumno::where('Matricula', session('matricula'))->get();
+
+        foreach($sesAl as $idAl){
+            $retId = $idAl->idAlumno;
+        }
+
+        return $retId;
+    }
+
     public function index()
     {
-        $alumno = Alumno::where('idAlumno', 203)->get();
+        $alumno = Alumno::where('Matricula', session('matricula'))->get();
         return view('homeAlumno', compact('alumno'));
     }
 
     public function cursadas()
     {
+        $idAlumno = $this->getId();
         $materias = ControlMateria::join('materias', 'control_materias.idmaterias', '=', 'materias.idmaterias')
                                     ->select('materias.Nombre', 'materias.Nivel', 'materias.Area', 'materias.Creditos')
-                                    ->where('idAlumno', 203)->where('estado', 'Finalizado')->get();
+                                    ->where('idAlumno',  $idAlumno)->where('estado', 'Finalizado')->get();
         return view('materiasCursadas', compact('materias'));
     }
 
@@ -33,22 +44,24 @@ class homeAlumnoController extends Controller
 
     public function enCurso()
     {
+        $idAlumno = $this->getId();
         $cursando = ControlMateria::join('materias', 'control_materias.idmaterias', '=', 'materias.idmaterias')
                                     ->select('materias.Nombre', 'materias.Nivel', 'materias.Area', 'materias.Creditos')
-                                    ->where('idAlumno', 203)->where('estado', 'En curso')->get();
+                                    ->where('idAlumno', $idAlumno)->where('estado', 'En curso')->get();
         return view('enCurso', compact('cursando'));
     }
 
     public function proyeccion()
     {
+        $idAlumno = $this->getId();
         $ambas = ControlMateria::join('materias', 'control_materias.idmaterias', '=', 'materias.idmaterias')->join('alumnos', 'control_materias.idAlumno', '=', 'alumnos.idAlumno')
                                     ->join('pre_requisitos', 'materias.idmaterias', '=', 'pre_requisitos.idmaterias')
                                     ->select('materias.idmaterias')
-                                    ->where('alumnos.idAlumno', 203)->where('control_materias.Estado', '!=', 'Pendiente')->get();
+                                    ->where('alumnos.idAlumno', $idAlumno)->where('control_materias.Estado', '!=', 'Pendiente')->get();
         $enCurso = ControlMateria::join('materias', 'control_materias.idmaterias', '=', 'materias.idmaterias')->join('alumnos', 'control_materias.idAlumno', '=', 'alumnos.idAlumno')
                                     ->join('pre_requisitos', 'materias.idmaterias', '=', 'pre_requisitos.idmaterias')
                                     ->select('materias.idmaterias', 'control_materias.Estado', 'materias.Periodo')
-                                    ->where('alumnos.idAlumno', 203)->where('control_materias.Estado', 'En curso')->get();
+                                    ->where('alumnos.idAlumno', $idAlumno)->where('control_materias.Estado', 'En curso')->get();
         
         foreach ($enCurso as $mat) {
             $sigSem = Materia::select('Nombre', 'idmaterias', 'Periodo')->where('Periodo', $mat->Periodo + 1)->get();    

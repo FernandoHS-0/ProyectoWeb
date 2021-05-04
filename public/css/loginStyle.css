@@ -1,0 +1,41 @@
+#cardLog{
+    display: block;
+    width: 30%;
+    background-color:white;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-bottom: 30px;
+    margin-top: 15%;
+    margin-left: 20%;
+    animation: fadeIn 3s;
+    border: 2px solid rgb(0, 59, 92);
+}
+
+#titSes{
+    margin-left: 13%;
+}
+
+#btnIn{
+    margin-left: 30%;
+    background-color: rgb(0, 59, 92);
+}
+
+.input-field input[type=text]:focus + label{
+    color: rgb(0, 59, 92);
+}
+
+#side{
+    display: block;
+    margin-left: 10%;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
