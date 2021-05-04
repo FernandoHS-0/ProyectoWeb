@@ -59,14 +59,14 @@
             @csrf
             <div class="row">
                 <div class="input-field col s12">
-                <input type="text" name="matricula" id="matr" class="validate">
-                <label for="matr">Matricula</label>
+                <input type="text" name="matricula" id="matricula" class="validate">
+                <label for="matricula" data-error="{{ $errors->first('matricula') }}">Matricula</label>
             </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                <input type="password" name="contrasena" id="psswd" class="validate">
-                <label for="psswd">Contraseña</label>
+                <input type="password" name="contrasena" id="contrasena" class="validate">
+                <label for="contrasena" data-error="{{$errors->first('contrasena')}}">Contraseña</label>
             </div>
             </div>
             <div class="col s12">

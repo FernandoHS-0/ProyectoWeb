@@ -9,6 +9,11 @@ use App\Models\Administrador;
 class UserAuth extends Controller
 {
     public function userLogin(Request $req){
+
+        $req()->validate([
+            'matricula' => 'required',
+            'contrasena' => 'required'
+        ]);
         
         $sesion = $req->input();
         
