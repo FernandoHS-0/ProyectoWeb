@@ -43,7 +43,7 @@ class UserAuth extends Controller
             $admin = Administrador::all();
             foreach ($admin as $datosAd){
                 if($datosAd->idadministrador == $req->input('matricula') && $datosAd->contrasena == $req->input('contrasena')){
-                    $req->session()->put('matricula'. $sesion['matricula']);
+                    $req->session()->put('matricula', $sesion['matricula']);
                     return redirect('administrador');
                 }
             }

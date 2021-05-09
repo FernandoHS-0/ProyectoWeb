@@ -34,8 +34,8 @@
                     <h5 class="center-align white-text condensed light">Hola, {{$datos->Nombre}} {{$datos->ApellidoPaterno}} {{$datos->ApellidoMaterno}}</h5>
                     <br><h5 class="center-align white-text thin">{{$datos->Matricula}}</h5>
                     <br><h5 class="center-align white-text condensed light">Ingeniería en tecnologías de la información (Ciudad Universitaria)</h5>
-                    <br><h5 class="center-align white-text condensed light">Tu promedio</h5>
-                    <h3 class="center-align white-text thin">8.64</h3>
+                    <br><h5 class="center-align white-text condensed light">Tu progreso academico</h5>
+                    <h3 class="center-align white-text thin">{{$prog}}%</h3>
                 @endforeach
             </div>
             <div class="col s3">
@@ -45,5 +45,5 @@
                 <a class="waves-effect waves-light btn" href="http://localhost/codigos/Proyecto/blog/public/logOut" id="btnLo">Cerrar sesión</a>
             </div>
         </div>
-    </div>
+    </div> 
 @endsection

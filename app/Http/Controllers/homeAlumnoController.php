@@ -25,8 +25,15 @@ class homeAlumnoController extends Controller
     public function index()
     {
         $alumno = Alumno::where('Matricula', session('matricula'))->get();
-        return view('homeAlumno', compact('alumno'));
-    }
+
+        $avance = DB::select(DB::raw('SELECT count(idMaterias) AS numMat FROM control_materias WHERE idAlumno = '.$this->getId().' AND estado = "Finalizado"'));
+        
+        foreach($avance as $av){
+            $prog = ($av->numMat * 100)/42;
+        }
+        $prog = bcdiv($prog, '1', 2);
+        return view('homeAlumno', compact('alumno','prog'));
+    } 
 
     public function cursadas()
     {

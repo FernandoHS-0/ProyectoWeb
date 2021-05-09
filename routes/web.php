@@ -39,6 +39,7 @@ Route::view('cambio_contrasena', 'chgPsswd');
 Route::get('/logOut', function () {
     if(session()->has('matricula')){
         session()->pull('matricula');
+        session()->pull('contrasena');
     }
     return redirect('/login');
 });

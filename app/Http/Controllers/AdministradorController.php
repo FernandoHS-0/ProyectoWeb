@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Administrador;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use App\Models\ControlMateria;
@@ -82,8 +84,8 @@ class AdministradorController extends Controller
     }
     public function inicioAdmin()
     {
-        //$alumno = Alumno::where('idAlumno', 203)->get();
-        return view('inicioAdmin');
+        $admn = Administrador::where('idadministrador', session('matricula'))->get();
+        return view('inicioAdmin', compact('admn'));
     }
     public function datosAlumno()
     {
