@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>  
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
     <title>Cambio de contraseña</title>
     <style>
         body{
@@ -57,11 +57,49 @@
             margin-bottom: 1%;
             background-color: rgb(0, 181, 226);
         }
+        .error{
+            color: #dc143c ;
+        }
     </style>
     <script>
         $(document).ready(function(){
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            var nPass = $('[name=nPass]');
+            var conPass = $('[name=confPass]');
+            var error = "*Las contraseñas no coinciden";
+            var vacio = "*La contraseña no puede estar vacía"
+            var span = $('<span></span>').insertAfter(conPass);
+            span.hide();
+
+            function iguales(){
+                span.show().addClass('error');
+                var val1 = nPass.val();
+                var val2 = conPass.val();
+                console.log("nPass: " + val1);
+                console.log("confPass:" + val2);
+                if(val2 == val1){
+                    $("#offsetIn").prop("disabled", false);
+                    span.hide();
+                }
+                if(val2 != val1){
+                    $("#offsetIn").prop("disabled", true);
+                    span.text(error);
+                }
+                if(val2.length==0 || val2==""){
+                    $("#offsetIn").prop("disabled", true);
+                    span.text(vacio);
+                }
+            }
+
+            conPass.keyup(function(){
+                iguales();
+            });
         });
     </script>
 </head>
@@ -90,13 +128,13 @@
             @csrf
             <div class="row">
                 <div class="input-field offsetIn">
-                    <input type="password" name="nPass">
+                    <input type="password" name="nPass" id="nPass">
                     <label for="nPass">Ingrese una nueva contraseña</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field offsetIn">
-                    <input type="password" name="confPass">
+                    <input type="password" name="confPass" id="confPass">
                     <label for="confPass">Vuelva a escribir su contraseña</label>
                 </div>
             </div>
@@ -105,7 +143,7 @@
             </div>
         </form>
     </div>
-    
+
     <footer class="page-footer" id="footer1">
         <div class="container">
           <div class="row">

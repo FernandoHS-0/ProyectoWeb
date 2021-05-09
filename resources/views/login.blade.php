@@ -55,18 +55,18 @@
         </div>
         <div class="col s12 m8 l9" id="cardLog">
             <h3 class="condensed light" id="titSes">Iniciar sesión</h3>
-            <form action="user" method="POST" class="col s10">
+            <form action="{{url('user-form')}}" method="POST" class="col s10">
             @csrf
             <div class="row">
                 <div class="input-field col s12">
-                <input type="text" name="matricula" id="matricula" class="validate">
-                <label for="matricula" data-error="{{ $errors->first('matricula') }}">Matricula</label>
+                <input type="text" name="matricula" id="matricula" class="validate" required>
+                <label for="matricula">Matricula</label>
             </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                <input type="password" name="contrasena" id="contrasena" class="validate">
-                <label for="contrasena" data-error="{{$errors->first('contrasena')}}">Contraseña</label>
+                <input type="password" name="contrasena" id="contrasena" class="validate" required>
+                <label for="contrasena">Contraseña</label>
             </div>
             </div>
             <div class="col s12">

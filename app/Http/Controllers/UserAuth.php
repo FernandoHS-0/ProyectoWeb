@@ -10,25 +10,34 @@ class UserAuth extends Controller
 {
     public function userLogin(Request $req){
 
-        $req()->validate([
+        /*$req()->validate([
             'matricula' => 'required',
             'contrasena' => 'required'
-        ]);
+        ]);*/
         
         $sesion = $req->input();
+
+        
         
         if(strlen($req->input('matricula')) == 9){
-            $alumno = Alumno::all();
-            foreach ($alumno as $datAl){
-                if($datAl->Matricula == $req->input('matricula') && $datAl->Contrasena == $req->input('contrasena')){
-                    $req->session()->put('matricula', $sesion['matricula']);
-                    if($datAl->Matricula == $datAl->Contrasena){
-                        return redirect('cambio_contrasena');
-                    }else{
-                        return redirect('alumno');
-                    }
-                    
+            $alumnos = Alumno::where('Matricula', $req->input('matricula'))->where('Contrasena', $req->input('contrasena'))->get();
+            $matriculaQ = null;
+            $contraQ = null;
+            foreach($alumnos as $alumno){
+                $matriculaQ = $alumno->Matricula; 
+                $contraQ = $alumno->Contrasena;
+            }
+            if($matriculaQ == $req->input('matricula') && $contraQ == $req->input('contrasena')){
+                $req->session()->put('matricula', $sesion['matricula']);
+                $req->session()->put('contrasena', $sesion['contrasena']);
+                if(session('matricula') == session('contrasena')){
+                    return redirect('cambio_contrasena');
+                }else{
+                    return redirect('alumno');
                 }
+            }else{
+                $error = "La matricula o la contraseña son invalidos";
+                return redirect('login');
             }
         }elseif (strlen($req->input('matricula')) == 4) {
             $admin = Administrador::all();
@@ -38,6 +47,8 @@ class UserAuth extends Controller
                     return redirect('administrador');
                 }
             }
+        }else{
+            return redirect('login');
         }
 
     }

@@ -58,7 +58,7 @@ Route::get('administrador/proyecciones', [AdministradorController::class, 'verPr
 Route::post('/verInfo', [AdministradorController::class, 'obtenerDatos']) -> name('obt');
 Route::post('/verProyeccion', [AdministradorController::class, 'obtenerDatosProyecion']) -> name('obtP');
 
-Route::post('user', [UserAuth::class,'userLogin']);
+Route::post('user-form', [UserAuth::class,'userLogin']);
 
 Route::post('cambio', [UserAuth::class, 'cambioContra']);
 
