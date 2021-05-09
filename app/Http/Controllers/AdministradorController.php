@@ -17,9 +17,24 @@ class AdministradorController extends Controller
     public function obtenerDatos(Request $re){
         $mat=$re->matricula;
         $alumno = Alumno::where('Matricula', $mat)->get();
-        return response(json_encode($alumno));
-    }
 
+        foreach($alumno as $al){
+            $idAl = $al->idAlumno;
+        }
+
+        $avance = DB::select(DB::raw('SELECT count(idMaterias) AS numMat FROM control_materias WHERE idAlumno = '.$idAl.' AND estado = "Finalizado"'));
+        
+        foreach($avance as $av){
+            $prog = ($av->numMat * 100)/42;
+        }
+        $prog = bcdiv($prog, '1', 2);
+
+        $variables = array('alumno' => "$alumno",
+                           'prog' => "$prog");
+
+        return response(json_encode($variables));
+    }
+ 
     public function obtenerDatosProyecion(Request $re){
         /**Obtenemos la matricula*/
         $mat=$re->matricula;

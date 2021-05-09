@@ -62,7 +62,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($alumnos as $item)
+                    @foreach ($alumno as $item)
                     <tr>
                         <td style="text-align: left;width:50%;">{{$item->Nombre}} {{$item->ApellidoPaterno}} {{$item->Materno}}</td>
                         <td>{{$item->Matricula}}</td>
@@ -77,7 +77,7 @@
                 <h5 class="center-align white-text condensed light">Ingeniería en tecnologías de la información <br>(Ciudad Universitaria)</h5>
                 <br><h5 class="center-align white-text condensed light" id="nombre">Genaro Ramírez Santiago</h5>
                 <br><h5 class="center-align white-text condensed light" id="matricula">201865950</h5>
-                <br><h5 class="center-align white-text condensed light" id="promedio">Promedio<br>8.4</h5>
+                <br><h5 class="center-align white-text condensed light" id="progreso">Progreso academico<br>%</h5>
 
             </div>
             <div id="buscador">   
@@ -107,6 +107,7 @@
                     var arreglo=JSON.parse(response);
                     $("#nombre").html(arreglo[0].Nombre+" "+arreglo[0].ApellidoPaterno+" "+arreglo[0].ApellidoMaterno);
                     $("#matricula").html(arreglo[0].Matricula);
+                    $("#progeso").html(arreglo[0].prog);
                     $("h5").css("display","block");
                     $("h4").css("display","block");
                 }
