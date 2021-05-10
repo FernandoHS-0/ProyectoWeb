@@ -17,11 +17,9 @@
         width:46%;
         margin-top: 10px;
         margin-left:10px;
-        background-color:lightgray;
     }
     #datosAlumno table {
         width:100%;
-        background-color:lightgray;
     }
     td {
         border-top: 1px solid black;
@@ -39,22 +37,29 @@
         padding: 10px;
         color: white;
     }
-    #buscar{
-        width: 30%;
-        margin-left: 45%;
-        color:white;
-        font-weight: bold;
-        font-size: 17px;
-    }
     h5,h4{
         display: none;
     }
+    #buscarr{
+            width: 30%;
+            margin-left: 45%;
+            color:black;
+            font-weight: bold;
+            font-size: 14px;
+            background-color:white;
+        }
 </style>
 
 <div id="bloque1" class="z-depth-3">
     <div class="row">
+        <div id="buscadorr" class="col s7">   
+            @csrf    
+            <input type="text" id="buscarr" placeholder="Ingrese nombre/matricula" onkeyup="Buscar()">
+            <i class="Small material-icons">search</i>
+
+        </div>
         <div class="col s9" id="datosAlumno">
-            <table class="highlight centered responsive-table datosAlumno">
+            <table class="highlight centered responsive-table datosAlumno" id="datoss">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -62,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($alumno as $item)
+                    @foreach ($alumnos as $item)
                     <tr>
                         <td style="text-align: left;width:50%;">{{$item->Nombre}} {{$item->ApellidoPaterno}} {{$item->Materno}}</td>
                         <td>{{$item->Matricula}}</td>
@@ -80,21 +85,46 @@
                 <br><h5 class="center-align white-text condensed light" id="progreso">Progreso academico<br>%</h5>
 
             </div>
-            <div id="buscador">   
-                @csrf    
-                <input type="text" id="buscar" placeholder="Matricula">
-                <a class="waves-effect waves-light btn" id="btnBuscar">Buscar</a>
-            </div>
         </div> 
     </div>
 </div>
 
 <script>
-    $("#btnBuscar").click(function(e){   
-        e.preventDefault();
-        var matri=$("#buscar").val();
-        var _token=$("input[name=_token]").val();
 
+function Buscar()
+    {
+        const registros = document.getElementById('datoss'); //Almacenamos los registros/tabla
+        const buscarR = document.getElementById('buscarr').value.toUpperCase();//Obtenemos la cadena a buscar
+        let total = 0;
+
+        // Recorremos todas las filas
+        for (let i = 1; i < registros.rows.length; i++) {
+            let encontrar = false;
+            //Almacenamos las celdas de cada columna
+            const celdasC = registros.rows[i].getElementsByTagName('td');
+            // Recorremos todas las celdas
+            for (let j = 0; j < celdasC.length && !encontrar; j++) {
+                const compareWith = celdasC[j].innerHTML.toUpperCase();
+                // Buscamos el texto en el contenido de la celda
+                if (buscarR.length == 0 || compareWith.indexOf(buscarR) > -1) {
+                    encontrar = true;
+                    total++;
+                }
+            }
+            if (encontrar) {
+                /*Mostramos las coincidencias*/
+                registros.rows[i].style.display = '';
+            } else {
+                /*Ocultamos los registros*/
+                registros.rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    $("tr").click(function(e){   
+        e.preventDefault();
+        var matri=$(this).find("td:last-child").text();;
+        var _token=$("input[name=_token]").val();
         $.ajax({
             url:"{{route('obt')}}",
             type:"POST",
@@ -107,7 +137,7 @@
                     var arreglo=JSON.parse(response);
                     $("#nombre").html(arreglo[0].Nombre+" "+arreglo[0].ApellidoPaterno+" "+arreglo[0].ApellidoMaterno);
                     $("#matricula").html(arreglo[0].Matricula);
-                    $("#progeso").html(arreglo[0].prog);
+                    $("#progreso").html("Progreso academico"+"<br>"+"%"+arreglo[1].prog);
                     $("h5").css("display","block");
                     $("h4").css("display","block");
                 }

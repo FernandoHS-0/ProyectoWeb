@@ -29,10 +29,9 @@ class AdministradorController extends Controller
         }
         $prog = bcdiv($prog, '1', 2);
 
-        $variables = array('alumno' => "$alumno",
-                           'prog' => "$prog");
+        $alumno[]=array('prog'=>$prog);
 
-        return response(json_encode($variables));
+        return response(json_encode($alumno));
     }
  
     public function obtenerDatosProyecion(Request $re){
