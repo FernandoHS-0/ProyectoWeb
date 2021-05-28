@@ -137,7 +137,7 @@ function Buscar()
                     var arreglo=JSON.parse(response);
                     $("#nombre").html(arreglo[0].Nombre+" "+arreglo[0].ApellidoPaterno+" "+arreglo[0].ApellidoMaterno);
                     $("#matricula").html(arreglo[0].Matricula);
-                    $("#progreso").html("Progreso academico"+"<br>"+"%"+arreglo[1].prog);
+                    $("#progreso").html("Progreso academico"+"<br>"+arreglo[1].prog+"%");
                     $("h5").css("display","block");
                     $("h4").css("display","block");
                 }
